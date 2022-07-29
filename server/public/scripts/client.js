@@ -5,3 +5,4 @@ $(ready)
 function ready() {
     console.log('jQuery')
 }
+
