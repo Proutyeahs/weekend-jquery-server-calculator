@@ -24,6 +24,7 @@ function ready() {
 }
 
 let number;
+let number2;
 let operator;
 
 // this needs to reset dom.. after an operator is pressed delete past stored data
@@ -122,41 +123,41 @@ function clickDiv() {
     // $('#number').val($('#number').val() + '/');
 }
 
-function clickeq() {
-    console.log('clicked')
-    let number2;
-    number2 = $('#number').val()
-    console.log(number)
-    console.log(number2)
-    console.log(operator)
-    $.ajax({
-        mthod : "POST",
-        url : '/math',
-        data : {
-            number : number,
-            number2 : number2,
-            operator : operator
-        }
-    }).then(function(responce) {
-        console.log(responce)
-        getMath()
-    })
-}
-
 function getMath() {
     console.log('in math')
     $.ajax({
         method : 'GET',
         url : '/math'
-    }).then(function(responce) {
-        console.log(responce)
+    }).then(function(response) {
+        console.log(response)
         renderToDom()
     })
-    console.log('end meth')
+    console.log('end math')
 }
 
-function renderToDom(math) {
+function clickeq() {
+    console.log('clicked')
+    number2 = $('#number').val()
+    console.log(number)
+    console.log(number2)
+    console.log(operator)
+    $.ajax({
+        method : "POST",
+        url : '/math',
+        data : {
+            num : number,
+            num2 : number2,
+            op : operator
+        }
+    }).then(function(response) {
+        console.log(response)
+        getMath()
+    })
+}
+
+function renderToDom(equation) {
+    $('#result').empty()
     $('#result').append(`
-        <li>${math}</li>
+        <li>${equation}</li>
     `)
 }
