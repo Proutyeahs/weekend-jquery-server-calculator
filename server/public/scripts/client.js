@@ -4,50 +4,99 @@ $(ready)
 
 function ready() {
     console.log('jQuery')
-    $('#1').on('click', getVal)
+    $('#0').on('click', click0)
+    $('#1').on('click', click1)
+    $('#2').on('click', click2)
+    $('#3').on('click', click3)
+    $('#4').on('click', click4)
+    $('#5').on('click', click5)
+    $('#6').on('click', click6)
+    $('#7').on('click', click7)
+    $('#8').on('click', click8)
+    $('#9').on('click', click9)
+    $('#min').on('click', clickMin)
+    $('#mul').on('click', clickMul)
+    $('#div').on('click', clickDiv)
+    $('#add').on('click', clickAdd)
+    $('#dot').on('click', clickDot)
+    $('#c').on('click', clear)
 }
 
-function assignVal() {
-    let val;
-    if ($('#1')) {
-        val = 1
-    } else if ($('#2')) {
-        val = 2
-    } else if ($('#3')) {
-        val = 3
-    } else if ($('#4')) {
-        val = 4
-    } else if ($('#5')) {
-        val = 5
-    } else if ($('#6')) {
-        val = 6
-    } else if ($('#7')) {
-        val = 7
-    } else if ($('#8')) {
-        val = 8
-    } else if ($('#9')) {
-        val = 9
-    } else if ($('#+')) {
-        val = '+'
-    } else if ($('#-')) {
-        val = '-'
-    } else if ($('#*')) {
-        val = '*'
-    } else if ($('#.')) {
-        val = '.'
-    } else if ($('#/')) {
-        val = '/'
-    } else if ($('#c')) {
-        val = 'c'
-    } else if ($('#=')) {
-        run()
-    }
-    appendNumbers(val)
+function clear() {
+    $('#number').val('')
 }
 
-// appending the number from the button into the input box
-function appendNumbers() {
-    let info = $(this).val()
-    console.log(info)
-    $('#number').append(info)
+function click0() {
+    console.log('clicked')
+    $('#number').val($('#number').val() + 0);
+}
+
+function click1() {
+    console.log('clicked')
+    $('#number').val($('#number').val() + 1);
+}
+
+function click2() {
+    console.log('clicked')
+    $('#number').val($('#number').val() + 2);
+}
+
+function click3() {
+    console.log('clicked')
+    $('#number').val($('#number').val() + 3);
+}
+
+function click4() {
+    console.log('clicked')
+    $('#number').val($('#number').val() + 4);
+}
+
+function click5() {
+    console.log('clicked')
+    $('#number').val($('#number').val() + 5);
+}
+
+function click6() {
+    console.log('clicked')
+    $('#number').val($('#number').val() + 6);
+}
+
+function click7() {
+    console.log('clicked')
+    $('#number').val($('#number').val() + 7);
+}
+
+function click8() {
+    console.log('clicked')
+    $('#number').val($('#number').val() + 8);
+}
+
+function click9() {
+    console.log('clicked')
+    $('#number').val($('#number').val() + 9);
+}
+
+function clickAdd() {
+    console.log('clicked')
+    $('#number').val($('#number').val() + '+');
+}
+
+function clickMin() {
+    console.log('clicked')
+    $('#number').val($('#number').val() + '-');
+}
+
+function clickMul() {
+    console.log('clicked')
+    $('#number').val($('#number').val() + '*');
+}
+
+function clickDot() {
+    console.log('clicked')
+    $('#number').val($('#number').val() + '.');
+}
+
+function clickDiv() {
+    console.log('clicked')
+    $('#number').val($('#number').val() + '/');
 }
