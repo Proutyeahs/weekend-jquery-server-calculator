@@ -27,7 +27,6 @@ let number = ''
 let number2 = ''
 let operator = ''
 
-// this needs to reset dom.. after an operator is pressed delete past stored data
 function clear() {
     $('#number').val('')
     number = ''
@@ -96,7 +95,6 @@ function clickAdd() {
     operator = '+'
     $('#number').val('')
     console.log(number)
-    // $('#number').val($('#number').val() + '+');
 }
 
 function clickMin() {
@@ -105,7 +103,6 @@ function clickMin() {
     operator = '-'
     $('#number').val('')
     console.log(number)
-    // $('#number').val($('#number').val() + '-');
 }
 
 function clickMul() {
@@ -114,7 +111,6 @@ function clickMul() {
     operator = '*'
     $('#number').val('')
     console.log(number)
-    // $('#number').val($('#number').val() + '*');
 }
 
 function clickDiv() {
@@ -123,7 +119,6 @@ function clickDiv() {
     operator = '/'
     $('#number').val('')
     console.log(number)
-    // $('#number').val($('#number').val() + '/');
 }
 
 function getMath() {
