@@ -30,6 +30,9 @@ let operator;
 // this needs to reset dom.. after an operator is pressed delete past stored data
 function clear() {
     $('#number').val('')
+    number = ''
+    number2 = ''
+    operator = ''
 }
 
 function click0() {
@@ -130,7 +133,8 @@ function getMath() {
         url : '/math'
     }).then(function(response) {
         console.log(response)
-        renderToDom()
+        answerToDom(response)
+        equationToDom(response)
     })
     console.log('end math')
 }
@@ -138,6 +142,7 @@ function getMath() {
 function clickeq() {
     console.log('clicked')
     number2 = $('#number').val()
+    $('#number').val('')
     console.log(number)
     console.log(number2)
     console.log(operator)
@@ -155,9 +160,15 @@ function clickeq() {
     })
 }
 
-function renderToDom(equation) {
-    $('#result').empty()
+function answerToDom(answers) {
+    for (let answer of answers) {
+        $('#answer').empty()
+        $('#answer').append(`${answer.ans}`)
+    }
+}
+
+function equationToDom() {
     $('#result').append(`
-        <li>${equation}</li>
+        <li>${number} ${operator} ${number2}</li>
     `)
 }
