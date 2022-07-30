@@ -1,4 +1,9 @@
 * {
     background-color: gray;
+    color: pink;
     text-align: center;
+}
+
+#result {
+    display: inline-block;
 }

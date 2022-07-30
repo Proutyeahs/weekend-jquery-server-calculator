@@ -172,7 +172,7 @@ function answerToDom(answers) {
 }
 
 function equationToDom() {
-        $('#result').append(`
+        $('#result').prepend(`
         <li>${number} ${operator} ${number2}</li>
     `)
 }

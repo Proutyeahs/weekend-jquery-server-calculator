@@ -2,10 +2,8 @@
 
 Weekend jQuery Server Calculator
 
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
-
 ## Description
 
-Your project description goes here. What problem did you solve? How did you solve it?
+I created a calculator that takes in two numbers with a corresponding operator to output the result.
 
 Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
