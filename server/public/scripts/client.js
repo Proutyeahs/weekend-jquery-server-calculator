@@ -19,9 +19,14 @@ function ready() {
     $('#div').on('click', clickDiv)
     $('#add').on('click', clickAdd)
     $('#dot').on('click', clickDot)
+    $('#eq').on('click', clickeq)
     $('#c').on('click', clear)
 }
 
+let number;
+let operator;
+
+// this needs to reset dom.. after an operator is pressed delete past stored data
 function clear() {
     $('#number').val('')
 }
@@ -76,27 +81,82 @@ function click9() {
     $('#number').val($('#number').val() + 9);
 }
 
-function clickAdd() {
-    console.log('clicked')
-    $('#number').val($('#number').val() + '+');
-}
-
-function clickMin() {
-    console.log('clicked')
-    $('#number').val($('#number').val() + '-');
-}
-
-function clickMul() {
-    console.log('clicked')
-    $('#number').val($('#number').val() + '*');
-}
-
 function clickDot() {
     console.log('clicked')
     $('#number').val($('#number').val() + '.');
 }
 
+function clickAdd() {
+    console.log('clicked')
+    number = $('#number').val()
+    operator = '+'
+    $('#number').val('')
+    console.log(number)
+    // $('#number').val($('#number').val() + '+');
+}
+
+function clickMin() {
+    console.log('clicked')
+    number = $('#number').val()
+    operator = '-'
+    $('#number').val('')
+    console.log(number)
+    // $('#number').val($('#number').val() + '-');
+}
+
+function clickMul() {
+    console.log('clicked')
+    number = $('#number').val()
+    operator = '*'
+    $('#number').val('')
+    console.log(number)
+    // $('#number').val($('#number').val() + '*');
+}
+
 function clickDiv() {
     console.log('clicked')
-    $('#number').val($('#number').val() + '/');
+    number = $('#number').val()
+    operator = '/'
+    $('#number').val('')
+    console.log(number)
+    // $('#number').val($('#number').val() + '/');
+}
+
+function clickeq() {
+    console.log('clicked')
+    let number2;
+    number2 = $('#number').val()
+    console.log(number)
+    console.log(number2)
+    console.log(operator)
+    $.ajax({
+        mthod : "POST",
+        url : '/math',
+        data : {
+            number : number,
+            number2 : number2,
+            operator : operator
+        }
+    }).then(function(responce) {
+        console.log(responce)
+        getMath()
+    })
+}
+
+function getMath() {
+    console.log('in math')
+    $.ajax({
+        method : 'GET',
+        url : '/math'
+    }).then(function(responce) {
+        console.log(responce)
+        renderToDom()
+    })
+    console.log('end meth')
+}
+
+function renderToDom(math) {
+    $('#result').append(`
+        <li>${math}</li>
+    `)
 }
