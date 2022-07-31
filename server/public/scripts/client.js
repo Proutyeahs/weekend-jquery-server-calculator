@@ -93,13 +93,17 @@ function clickDot() {
         $('#number').val($('#number').val() + '.');
     }
 }
-// assigning the first number and operator upon clicking an operator then emptying the input feild
+// checks if the value is a number, assigns the first number and operator upon clicking specified operator then empties the input feild
 function clickAdd() {
-    console.log('clicked')
-    number = $('#number').val()
-    operator = '+'
-    $('#number').val('')
-    console.log(number)
+    if ( Number($('#number').val())) {
+        console.log('clicked')
+        number = $('#number').val()
+        operator = '+'
+        $('#number').val('')
+        console.log(number)
+    } else {
+        alert('Numbers only!')
+    }
 }
 
 function clickMin() {
@@ -108,29 +112,39 @@ function clickMin() {
         $('#number').val($('#number').val() + '-')
     } else if ($('#number').val() == '-') {
         alert('Input a number please!')
-    } else {
+    } else if (Number($('#number').val())){
         console.log('clicked')
         number = $('#number').val()
         operator = '-'
         $('#number').val('')
         console.log(number)
+    } else {
+        alert('Numbers only!')
     }
 }
 
 function clickMul() {
-    console.log('clicked')
-    number = $('#number').val()
-    operator = '*'
-    $('#number').val('')
-    console.log(number)
+    if ( Number($('#number').val())) {
+        console.log('clicked')
+        number = $('#number').val()
+        operator = '*'
+        $('#number').val('')
+        console.log(number)
+    } else {
+        alert('Numbers only!')
+    }
 }
 
 function clickDiv() {
-    console.log('clicked')
-    number = $('#number').val()
-    operator = '/'
-    $('#number').val('')
-    console.log(number)
+    if ( Number($('#number').val())) {
+        console.log('clicked')
+        number = $('#number').val()
+        operator = '/'
+        $('#number').val('')
+        console.log(number)
+    } else {
+        alert('Numbers only!')
+    }
 }
 // gets the answer back from the server
 function getMath() {
@@ -149,26 +163,30 @@ function clickeq() {
     // makes sure all values are assigned
     if ($('#number').val() == '' || operator == '') {
         return alert('Input left blank!')
-    } 
-    number2 = $('#number').val()
-    $('#number').val('')
-    console.log(number)
-    console.log(number2)
-    console.log(operator)
-    $.ajax({
-        method : "POST",
-        url : '/math',
-        data : {
-            num : number,
-            num2 : number2,
-            op : operator
-        }
-    }).then(function(response) {
-        console.log(response)
-        getMath() // runs next function to receive answer from the server
-        equationToDom() // puts the equation on the DOM
-        clear() // clears stored data for next equation
-    })
+    // checks if the value is a number
+    } else if ( Number($('#number').val())) {
+        number2 = $('#number').val()
+        $('#number').val('')
+        console.log(number)
+        console.log(number2)
+        console.log(operator)
+        $.ajax({
+            method : "POST",
+            url : '/math',
+            data : {
+                num : number,
+                num2 : number2,
+                op : operator
+            }
+        }).then(function(response) {
+            console.log(response)
+            getMath() // runs next function to receive answer from the server
+            equationToDom() // puts the equation on the DOM
+            clear() // clears stored data for next equation
+        })
+    } else {
+        alert('Numbers only!')
+    }
 }
 // puts the answer on the dom
 function answerToDom(answers) {
