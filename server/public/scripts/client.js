@@ -93,7 +93,7 @@ function clickDot() {
         $('#number').val($('#number').val() + '.');
     }
 }
-// assigning the first number and operator upon clicking an operator and emptying the input feild
+// assigning the first number and operator upon clicking an operator then emptying the input feild
 function clickAdd() {
     console.log('clicked')
     number = $('#number').val()
