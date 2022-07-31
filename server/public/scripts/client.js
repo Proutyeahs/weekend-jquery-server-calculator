@@ -3,7 +3,7 @@ console.log('hello')
 $(ready)
 
 function ready() {
-    console.log('jQuery')
+    // click listeners 
     $('#0').on('click', click0)
     $('#1').on('click', click1)
     $('#2').on('click', click2)
@@ -22,18 +22,18 @@ function ready() {
     $('#eq').on('click', clickeq)
     $('#c').on('click', clear)
 }
-
+// global vars for each number and the operator
 let number = ''
 let number2 = ''
 let operator = ''
-
+// clear button, empties input and saved values
 function clear() {
     $('#number').val('')
     number = ''
     number2 = ''
     operator = ''
 }
-
+// assigning values into the input when each button is pressed
 function click0() {
     console.log('clicked')
     $('#number').val($('#number').val() + 0);
@@ -86,9 +86,14 @@ function click9() {
 
 function clickDot() {
     console.log('clicked')
-    $('#number').val($('#number').val() + '.');
+    // making sure only one decimal can be input
+    if ($('#number').val().includes('.')) {
+        return alert('Only one decimal allowed!')
+    } else {
+        $('#number').val($('#number').val() + '.');
+    }
 }
-
+// assigning the first number and operator upon clicking an operator and emptying the input feild
 function clickAdd() {
     console.log('clicked')
     number = $('#number').val()
@@ -98,11 +103,18 @@ function clickAdd() {
 }
 
 function clickMin() {
-    console.log('clicked')
-    number = $('#number').val()
-    operator = '-'
-    $('#number').val('')
-    console.log(number)
+    // allowing use of - for negative numbers as well as the operator
+    if ($('#number').val() == '') {
+        $('#number').val($('#number').val() + '-')
+    } else if ($('#number').val() == '-') {
+        alert('Input a number please!')
+    } else {
+        console.log('clicked')
+        number = $('#number').val()
+        operator = '-'
+        $('#number').val('')
+        console.log(number)
+    }
 }
 
 function clickMul() {
@@ -120,7 +132,7 @@ function clickDiv() {
     $('#number').val('')
     console.log(number)
 }
-
+// gets the answer back from the server
 function getMath() {
     console.log('in math')
     $.ajax({
@@ -128,16 +140,16 @@ function getMath() {
         url : '/math'
     }).then(function(response) {
         console.log(response)
-        answerToDom(response)
+        answerToDom(response) // puts answer on DOM
     })
     console.log('end math')
 }
-
+// sends data to the server when equals is clicked
 function clickeq() {
-    console.log('clicked')
+    // makes sure all values are assigned
     if ($('#number').val() == '' || operator == '') {
         return alert('Input left blank!')
-    }
+    } 
     number2 = $('#number').val()
     $('#number').val('')
     console.log(number)
@@ -153,19 +165,19 @@ function clickeq() {
         }
     }).then(function(response) {
         console.log(response)
-        getMath()
-        equationToDom()
-        clear()
+        getMath() // runs next function to receive answer from the server
+        equationToDom() // puts the equation on the DOM
+        clear() // clears stored data for next equation
     })
 }
-
+// puts the answer on the dom
 function answerToDom(answers) {
     for (let answer of answers) {
         $('#answer').empty()
         $('#answer').append(`${answer.ans}`)
     }
 }
-
+// puts the equation on the dom
 function equationToDom() {
         $('#result').prepend(`
         <li>${number} ${operator} ${number2}</li>
