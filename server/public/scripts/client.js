@@ -21,6 +21,7 @@ function ready() {
     $('#dot').on('click', clickDot)
     $('#eq').on('click', clickeq)
     $('#c').on('click', clear)
+    $('#clear').on('click', clearInput)
 }
 // global vars for each number and the operator
 let number = ''
@@ -33,6 +34,11 @@ function clear() {
     number2 = ''
     operator = ''
 }
+// clears current input
+function clearInput() {
+    $('#number').val('')
+}
+
 // assigning values into the input when each button is pressed
 function click0() {
     console.log('clicked')
