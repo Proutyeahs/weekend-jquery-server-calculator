@@ -226,8 +226,6 @@ function clickeq() {
             getEquation() // runs next function to receive the equations from the server
             clear() // clears stored data for next equation
         })
-    // } else {
-    //     alert('Numbers only!')
     }
 }
 // puts the answer on the dom
