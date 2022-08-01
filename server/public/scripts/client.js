@@ -31,6 +31,7 @@ let number2 = ''
 let operator = ''
 // clear button, empties input and saved values
 function clear() {
+    $('#num1').empty()
     $('#number').val('')
     number = ''
     number2 = ''
@@ -109,6 +110,8 @@ function clickAdd() {
         console.log('clicked')
         number = $('#number').val()
         operator = '+'
+        $('#num1').empty()
+        $('#num1').append(`${number} ${operator} `)
         $('#number').val('')
         console.log(number)
     } else {
@@ -129,6 +132,8 @@ function clickMin() {
         console.log('clicked')
         number = $('#number').val()
         operator = '-'
+        $('#num1').empty()
+        $('#num1').append(`${number} ${operator} `)
         $('#number').val('')
         console.log(number)
     } else {
@@ -143,6 +148,8 @@ function clickMul() {
         console.log('clicked')
         number = $('#number').val()
         operator = '*'
+        $('#num1').empty()
+        $('#num1').append(`${number} ${operator} `)
         $('#number').val('')
         console.log(number)
     } else {
@@ -157,6 +164,8 @@ function clickDiv() {
         console.log('clicked')
         number = $('#number').val()
         operator = '/'
+        $('#num1').empty()
+        $('#num1').append(`${number} ${operator} `)
         $('#number').val('')
         console.log(number)
     } else {
@@ -190,8 +199,11 @@ function getMath() {
 
 // sends data to the server when equals is clicked
 function clickeq() {
+    $('#num1').empty()
+    if (isNaN($('#number').val())) {
+        alert('Numbers only!')
     // makes sure all values are assigned
-    if ($('#number').val() == '' || operator == '') {
+    } else if ($('#number').val() == '' || operator == '') {
         return alert('A value was left blank!')
     // checks if the value is a number
     } else if ( Number($('#number').val())) {
@@ -214,8 +226,8 @@ function clickeq() {
             getEquation() // runs next function to receive the equations from the server
             clear() // clears stored data for next equation
         })
-    } else {
-        alert('Numbers only!')
+    // } else {
+    //     alert('Numbers only!')
     }
 }
 // puts the answer on the dom
