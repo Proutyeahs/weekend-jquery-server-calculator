@@ -31,6 +31,11 @@ app.get('/math', function(req, res) {
     console.log('GET /math')
     res.send(answers)
 })
+// sends the equations back to the client
+app.get('/equations', function(req, res) {
+    console.log('GET /equations')
+    res.send(equations)
+})
 // receives the data from the client
 app.post('/math', function(req, res) {
     console.log('POST /math')
