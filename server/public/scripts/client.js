@@ -24,6 +24,7 @@ function ready() {
     $('#clear').on('click', clearInput)
     // keeps previous equations on the DOM when refreshing the page
     getEquation()
+    getMath()
 }
 // global vars for each number and the operator
 let number = ''
@@ -180,7 +181,7 @@ function getEquation() {
         url : '/equations'
     }).then(function(response) {
         console.log(response)
-        equationToDom(response) // puts answer on DOM
+        equationToDom(response) // puts equation on DOM
     })
     console.log('end equations')
 }
@@ -230,9 +231,11 @@ function clickeq() {
 }
 // puts the answer on the dom
 function answerToDom(answers) {
+    $('#ans').empty()
     for (let answer of answers) {
         $('#answer').empty()
         $('#answer').append(`${answer.ans}`)
+        $('#ans').prepend(`<p> = ${answer.ans}</p>`)
     }
 }
 // puts the equation on the dom
@@ -240,7 +243,7 @@ function equationToDom(equations) {
     $('#result').empty()
     for (let equation of equations) {
         $('#result').prepend(`
-        <li>${equation.num} ${equation.op} ${equation.num2}</li>
+        <p>${equation.num} ${equation.op} ${equation.num2}</p>
         `)
-    }  
+    }
 }
