@@ -235,7 +235,11 @@ function answerToDom(answers) {
     for (let answer of answers) {
         $('#answer').empty()
         $('#answer').append(`${answer.ans}`)
-        $('#ans').prepend(`<p> = ${answer.ans}</p>`)
+        $('#ans').prepend(`
+            <tr>
+                <td>${answer.ans}</td>
+            </tr>
+        `)
     }
 }
 // puts the equation on the dom
@@ -243,7 +247,9 @@ function equationToDom(equations) {
     $('#result').empty()
     for (let equation of equations) {
         $('#result').prepend(`
-        <p>${equation.num} ${equation.op} ${equation.num2}</p>
+        <tr>
+            <td>${equation.num} ${equation.op} ${equation.num2} = <td>
+        </tr>
         `)
     }
 }
