@@ -199,7 +199,6 @@ function getMath() {
 
 // sends data to the server when equals is clicked
 function clickeq() {
-    $('#num1').empty()
     if (isNaN($('#number').val())) {
         alert('Numbers only!')
     // makes sure all values are assigned
@@ -207,6 +206,7 @@ function clickeq() {
         return alert('A value was left blank!')
     // checks if the value is a number
     } else if ( Number($('#number').val())) {
+        $('#num1').empty()
         number2 = $('#number').val()
         $('#number').val('')
         console.log(number)
