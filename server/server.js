@@ -1,7 +1,7 @@
 // import and create instance of express
 const express = require('express')
 const app = express()
-const PORT = 5000
+const PORT = process.env.PORT || 5000
 // global arrays to store data input from client and the answers
 equations = []
 answers = []
