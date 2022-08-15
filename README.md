@@ -3,7 +3,17 @@
 Weekend jQuery Server Calculator
 
 ## Description
+Duration: July 29th-31st
 
-I created a calculator that takes in two numbers with a corresponding operator to output the result.
+This app is a basic calculator I created that takes in two numbers with a corresponding operator to output the result. It also tracks the previous calcuations.
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+This app was built with:
+JavaScript
+jQuery
+HTML
+CSS
+Express.js
+Node.js
+
+Here is a link to the hosted application:
+https://salty-hamlet-65750.herokuapp.com/
